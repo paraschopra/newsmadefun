@@ -1,0 +1,3 @@
+News made fun. 
+
+Fetch headlines of the day. And provide headlines and their believable yet false variations (generated through LLM) to the user. One by one, user has to choose which one is true/false (e.g. Nifty climbed 2% or it declined 0.5%). Clicking on any will tell you which one is right, and more details (the full news).
