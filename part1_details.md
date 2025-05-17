@@ -4,27 +4,22 @@
 - **Project structure created**: All required directories and initial files for backend, API, frontend, styles, and tests are in place.
 - **TDD workflow established**: Jest is set up, and initial failing tests were written for the newsFetcher service.
 - **SQLite-based cache implemented**: `lib/cache.ts` provides a robust, file-based cache using better-sqlite3, with absolute path handling and table creation.
-- **newsFetcher service implemented**: `lib/newsFetcher.ts` fetches (mock) headlines, caches them, and retrieves them as needed.
-- **Tests for newsFetcher**: All tests now pass, verifying correct caching, retrieval, and cache invalidation logic.
+- **newsFetcher service implemented**: `lib/newsFetcher.ts` fetches real headlines from NewsAPI.org (using your API key), caches them in SQLite, and retrieves them as needed.
+- **headlineGenerator service implemented**: `lib/headlineGenerator.ts` generates plausible fake headlines using OpenRouter (LLM API, using your API key), ensures fakes are not identical to real headlines, and caches them (currently in-memory, ready for SQLite integration).
+- **API routes implemented and tested**: `/api/headlines` and `/api/generate-fake` are implemented with TDD (tests first, handlers next, all tests pass).
+- **End-to-end verification script**: A Node.js script (`scripts/demo_headlines.js`) successfully fetches real headlines and generates fake ones using the actual APIs, confirming the backend logic works with real data.
 - **Environment issues resolved**: Node version, native module, and permissions issues were debugged and fixed for a smooth local dev experience.
+- **Game Engine Logic implemented and tested**: `lib/gameEngine.ts` pairs real and fake headlines, tracks user guesses, calculates score, and manages game flow. All related tests pass.
 
-## Next Steps (TDD-driven)
-1. **Headline Generator Service**
-   - Write and implement tests for generating plausible fake headlines using OpenRouter (mocked for now).
-   - Ensure fake headlines are not identical to real ones and are cached in SQLite.
-2. **Game Engine Logic**
-   - Write and implement tests for pairing real and fake headlines, tracking user guesses, scoring, and managing game flow.
-3. **API Routes**
-   - Implement `/api/headlines` (returns real headlines) and `/api/generate-fake` (returns fake headline for a given real one).
-   - Write tests for API endpoints.
-4. **Frontend Components**
+## What's Remaining (TDD-driven)
+1. **Frontend Components**
    - TDD for React components: Landing page, Game interface, Results screen.
    - Ensure responsive design with Tailwind CSS.
-5. **Integration & Game Flow**
+2. **Integration & Game Flow**
    - Wire up frontend to backend API.
    - Implement game state management and user interaction.
    - Add integration tests for the full game flow.
-6. **Deployment Preparation**
+3. **Deployment Preparation**
    - Set up environment variables for API keys.
    - Prepare for Railway deployment (CI/CD, .env, README updates).
 
