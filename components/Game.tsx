@@ -9,9 +9,12 @@ type Headline = {
 type GameProps = {
   headlines: Headline[];
   onSubmit: (selectedId: number | null) => void;
+  round: number;
+  totalRounds: number;
+  score: number;
 };
 
-const Game = ({ headlines, onSubmit }: GameProps) => {
+const Game = ({ headlines, onSubmit, round, totalRounds, score }: GameProps) => {
   const [selected, setSelected] = useState<number | null>(null);
 
   return (
@@ -22,6 +25,8 @@ const Game = ({ headlines, onSubmit }: GameProps) => {
         onSubmit(selected);
       }}
     >
+      <div className="mb-2 text-gray-700">Round {round} of {totalRounds}</div>
+      <div className="mb-4 text-gray-700">Current Score: <span className="font-bold">{score}</span></div>
       <h2 className="text-2xl font-semibold mb-6">Which headline is real?</h2>
       <div className="flex flex-col gap-4 mb-8 w-full max-w-md">
         {headlines.map(h => (
